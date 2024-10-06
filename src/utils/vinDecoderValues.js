@@ -27,7 +27,6 @@ export const getVehicleProperties = (props) => {
 };
 
 export function getDecodedVin (setVinResponses, vin) {
-    console.log("HEWO: ", vin);
     const runPostRequest = () => {
         fetch('https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/'+vin+'?format=json', {
             method: 'GET',
