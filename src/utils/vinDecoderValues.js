@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 export const vinDecoderValues = [
     'Make',
     'Model',
@@ -28,20 +26,18 @@ export const getVehicleProperties = (props) => {
     return filteredProperties;
 };
 
-export const GetDecodedVin = () => {
-    const [vinResponses, setVinResponses] = useState({});
+export const getDecodedVin = (setVinResponses) => {
     const runPostRequest = () => {
         fetch('https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/3KPF54AD3NE436862?format=json', {
             method: 'GET',
             headers: {
+              'Access-Control-Allow-Origin': '*',
               'Accept': 'application/json',
               'Content-Type': 'application/json',
             },
           }).then(r => r.json()).then(r => {
             setVinResponses(getVehicleProperties(r.Results));
-            console.log("VIN RESPONSES: DONE");
          }).catch(error => console.error('Error', error));
     }
     runPostRequest();
-    return vinResponses;
 }
