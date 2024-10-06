@@ -1,22 +1,15 @@
 import './App.css';
 import { VinDecoder } from './components/VinDecoder';
+import { TextInput } from './components/TextInput';
+import React, { useState } from 'react';
 
 function App() {
+  const [vinResponses, setVinResponses] = useState([]);
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <VinDecoder />
+        <TextInput setVinResponses={setVinResponses}/>
+        {vinResponses.length !== 0 && <VinDecoder vinResponses={vinResponses}/>}
       </header>
     </div>
   );

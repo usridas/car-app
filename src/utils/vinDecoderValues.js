@@ -26,9 +26,10 @@ export const getVehicleProperties = (props) => {
     return filteredProperties;
 };
 
-export const getDecodedVin = (setVinResponses) => {
+export function getDecodedVin (setVinResponses, vin) {
+    console.log("HEWO: ", vin);
     const runPostRequest = () => {
-        fetch('https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/3KPF54AD3NE436862?format=json', {
+        fetch('https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/'+vin+'?format=json', {
             method: 'GET',
             headers: {
               'Access-Control-Allow-Origin': '*',
