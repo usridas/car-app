@@ -5,11 +5,12 @@ import React, { useState } from 'react';
 
 function App() {
   const [vinResponses, setVinResponses] = useState([]);
+  const [oilType, setOilType] = useState([]);
   return (
     <div className="App">
       <header className="App-header">
         <TextInput setVinResponses={setVinResponses}/>
-        {vinResponses.length !== 0 && <VinDecoder vinResponses={vinResponses}/>}
+        {vinResponses.length !== 0 && <VinDecoder vinResponses={vinResponses} setOilType={setOilType} oilType={oilType}/>}
       </header>
     </div>
   );
